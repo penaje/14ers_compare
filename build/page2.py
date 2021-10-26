@@ -189,6 +189,24 @@ canvas.create_text(  # Prominence # 2
     font=("Roboto", 12 * -1)
 )
 
+canvas.create_text(  # Isolation#1
+    22.0,
+    176.0,
+    anchor="nw",
+    text="Isolation:" + info.peaks_isolation.get(info.selected_peaks[0]),
+    fill="#000000",
+    font=("Roboto", 12 * -1)
+)
+
+canvas.create_text(  # Isolation#2
+    753.0,
+    176.0,
+    anchor="nw",
+    text="Isolation:" + info.peaks_isolation.get(info.selected_peaks[1]),
+    fill="#000000",
+    font=("Roboto", 12 * -1)
+)
+
 canvas.create_text(
     432.0,
     305.0,

@@ -24,3 +24,5 @@ peaks_dict = {"Whitney": 'The most popular route to the summit is by way of the 
 peaks_elevation = {'Whitney': '14,505 ft', 'Elbert': '14,440 ft', 'Rainier': '14,411 ft', 'Denali': '20,310 ft'}
 
 peaks_prominence = {'Whitney': '10,075 ft', 'Elbert': '9,093 ft', 'Rainier': '13,210 ft', 'Denali': '20,194 ft'}
+
+peaks_isolation = {'Whitney': '1,647 mi', 'Elbert': '671 mi', 'Rainier': '731 mi', 'Denali': '4,621 mi'}
