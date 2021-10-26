@@ -1,30 +1,42 @@
-
 from pathlib import Path
 
 from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
+import info  # Import the info file
+
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
+
+
+def load_page_2():
+    window.destroy()
+    import page2
+
+
+def print_selection():
+    print("Your selected Peaks are:")
+    for item in info.selected_peaks:
+        print(item)
 
 
 def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
-selected_peaks = []
-
-test_text = 'This is a test!'
-
-
 def add_button_name_to_selection(peak_name):
-    selected_peaks.append(peak_name)
-    print(selected_peaks)
+    if len(info.selected_peaks) < 2:
+        info.selected_peaks.append(peak_name)
+        print(peak_name + " added to selection!")
+        if len(info.selected_peaks) >= 1:
+            print_selection()
+    else:
+        print("Two Peaks already selected, clear selection and retry!")
 
 
 def clear_selection():
-    selected_peaks.clear()
+    info.selected_peaks.clear()
 
 
 window = Tk()
@@ -43,13 +55,14 @@ canvas = Canvas(
 )
 
 canvas.place(x=0, y=0)
-button_image_1 = PhotoImage(
+
+button_image_1 = PhotoImage(        # Mt Whitney
     file=relative_to_assets("button_1.png"))
 button_1 = Button(
     image=button_image_1,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: add_button_name_to_selection('Mt Whitney'),
+    command=lambda: add_button_name_to_selection('Whitney'),
     relief="flat"
 )
 button_1.place(
@@ -63,7 +76,7 @@ canvas.create_text(
     448.0,
     150.0,
     anchor="nw",
-    text="Please Select 2 - 3 Peaks to Compare",
+    text="Please Select 2 Peaks to Compare",
     fill="#000000",
     font=("Roboto", 24 * -1)
 )
@@ -86,7 +99,7 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-button_image_2 = PhotoImage(
+button_image_2 = PhotoImage(  # Denali
     file=relative_to_assets("button_2.png"))
 button_2 = Button(
     image=button_image_2,
@@ -128,13 +141,13 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-button_image_3 = PhotoImage(
+button_image_3 = PhotoImage(  # Mt Elbert
     file=relative_to_assets("button_3.png"))
 button_3 = Button(
     image=button_image_3,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_3 clicked"),
+    command=lambda: add_button_name_to_selection('Elbert'),
     relief="flat"
 )
 button_3.place(
@@ -153,13 +166,13 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-button_image_4 = PhotoImage(
+button_image_4 = PhotoImage(  # Mt Rainier
     file=relative_to_assets("button_4.png"))
 button_4 = Button(
     image=button_image_4,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_4 clicked"),
+    command=lambda: add_button_name_to_selection('Rainier'),
     relief="flat"
 )
 button_4.place(
@@ -169,13 +182,13 @@ button_4.place(
     height=78.0001220703125
 )
 
-button_image_5 = PhotoImage(
+button_image_5 = PhotoImage(  # Submit Button
     file=relative_to_assets("button_5.png"))
 button_5 = Button(
     image=button_image_5,
     borderwidth=0,
     highlightthickness=0,
-    command=lambda: print("button_5 clicked"),
+    command=lambda: load_page_2(),
     relief="flat"
 )
 button_5.place(
@@ -185,7 +198,7 @@ button_5.place(
     height=78.0001220703125
 )
 
-button_image_6 = PhotoImage(
+button_image_6 = PhotoImage(  # Clear Selection
     file=relative_to_assets("button_6.png"))
 button_6 = Button(
     image=button_image_6,
@@ -200,14 +213,6 @@ button_6.place(
     width=243.0,
     height=78.0001220703125
 )
-
-text_to_display = 'Mt Whitney, Mt Rainer'
-
-w = Label(window, text='Here is your selected peaks:', font='48', fg='gray')
-w.pack()
-
-msg = Message(window, text=text_to_display)
-msg.pack()
 
 window.resizable(True, True)
 window.mainloop()
