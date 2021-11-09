@@ -1,59 +1,29 @@
 from pathlib import Path
 from tkinter import *
-# Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 from PIL import Image, ImageTk
-import subprocess
-import sys
+from urllib.request import urlopen
+import urllib
+import io
 import info
-import json
+import image_import
+import ssl
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
-image_list = []
-
-base_url = 'https://en.wikipedia.org/wiki/'
-
-peak_one = info.peaks_url.get(info.selected_peaks[0])
-
-peak_two = info.peaks_url.get(info.selected_peaks[1])
-
-input_json_one = {'COMMAND': 'SCRAPE', 'TARGET': base_url + peak_one}
-
-input_json_two = {'COMMAND': 'SCRAPE', 'TARGET': base_url + peak_two}
-
-with open('input.json', 'w') as outfile:  # Create the input.json to read
-    json.dump(input_json_one, outfile)
-
-exec(open("./image_scraper/image_scraper.py").read())
-
-with open('output.json') as file:  # Output the json file with URL's
-    data = json.load(file)
-
-images = data.get('URLS')
-
-print(images[0])
-
-image_list.append(images[0])        # Adds the first peaks image
-
-with open('input.json', 'w') as outfile:  # Create the input.json to read
-    json.dump(input_json_two, outfile)
-
-exec(open("./image_scraper/image_scraper.py").read())
-
-with open('output.json') as file:  # Output the json file with URL's
-    data = json.load(file)
-
-images = data.get('URLS')
-
-print(images[0])
-
-image_list.append(images[0])        # Adds the second peaks image
-
-print(image_list)
-
+url_one = 'https:' + image_import.import_images()[0]
+url_two = 'https:' + image_import.import_images()[1]
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
+
+
+def img_from_url(url):
+    with urllib.request.urlopen(url) as connection:
+        raw_data = connection.read()
+    im = Image.open(io.BytesIO(raw_data))
+    image = ImageTk.PhotoImage(im)
+    return image
 
 
 def clear_selection():
@@ -75,6 +45,12 @@ window = Tk()
 window.geometry("1440x1024")
 window.configure(bg="#FFFFFF")
 
+image_one = img_from_url(url_two)
+width = image_one.width()
+height = image_one.height()
+
+print(height, width)
+
 canvas = Canvas(
     window,
     bg="#FFFFFF",
@@ -90,13 +66,13 @@ canvas.place(x=0, y=0)
 img_1_holder = Canvas(canvas, width=200, height=200)
 img_1_holder.place(x=419.0, y=32.0)
 
-img = ImageTk.PhotoImage(Image.open('assets/' + info.selected_peaks[0] + '.png'))
+img = img_from_url(url_one)  # NEW
 img_1_holder.create_image(200, 200, anchor=SE, image=img)
 
 img_2_holder = Canvas(canvas, width=200, height=200)
 img_2_holder.place(x=1162, y=32.0)
 
-img_2 = ImageTk.PhotoImage(Image.open('assets/' + info.selected_peaks[1] + '.png'))
+img_2 = img_from_url(url_two)  # NEW
 img_2_holder.create_image(200, 200, anchor=SE, image=img_2)
 
 canvas.create_rectangle(

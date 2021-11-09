@@ -2,7 +2,7 @@ selected_peaks = ['Whitney', 'Elbert']
 
 peaks_title = {'Whitney': 'Mt. Whitney', 'Elbert': 'Mt. Elbert', 'Rainier': 'Mt. Rainier', 'Denali': 'Denali'}
 
-peaks_url = {'Whitney': 'Mount_Whitney', 'Elbert': 'Mount_Elbert', 'Rainier': 'Mt. Rainier', 'Denali': 'Denali'}
+peaks_url = {'Whitney': 'Mount_Whitney', 'Elbert': 'Mount_Elbert', 'Rainier': 'Mount_Rainier', 'Denali': 'Denali'}
 
 peaks_dict = {"Whitney": 'The most popular route to the summit is by way of the Mount Whitney Trail, which starts at '
                          'Whitney Portal, at an elevation of 8,360 ft (2,548 m), 13 mi (21 km) west of the town of '
