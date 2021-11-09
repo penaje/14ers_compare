@@ -1,12 +1,56 @@
 from pathlib import Path
-
 from tkinter import *
 # Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
-
 from PIL import Image, ImageTk
-
+import subprocess
+import sys
 import info
+import json
+
+
+image_list = []
+
+base_url = 'https://en.wikipedia.org/wiki/'
+
+peak_one = info.peaks_url.get(info.selected_peaks[0])
+
+peak_two = info.peaks_url.get(info.selected_peaks[1])
+
+input_json_one = {'COMMAND': 'SCRAPE', 'TARGET': base_url + peak_one}
+
+input_json_two = {'COMMAND': 'SCRAPE', 'TARGET': base_url + peak_two}
+
+with open('input.json', 'w') as outfile:  # Create the input.json to read
+    json.dump(input_json_one, outfile)
+
+exec(open("./image_scraper/image_scraper.py").read())
+
+with open('output.json') as file:  # Output the json file with URL's
+    data = json.load(file)
+
+images = data.get('URLS')
+
+print(images[0])
+
+image_list.append(images[0])        # Adds the first peaks image
+
+with open('input.json', 'w') as outfile:  # Create the input.json to read
+    json.dump(input_json_two, outfile)
+
+exec(open("./image_scraper/image_scraper.py").read())
+
+with open('output.json') as file:  # Output the json file with URL's
+    data = json.load(file)
+
+images = data.get('URLS')
+
+print(images[0])
+
+image_list.append(images[0])        # Adds the second peaks image
+
+print(image_list)
+
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")

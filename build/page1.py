@@ -1,10 +1,14 @@
 from pathlib import Path
 
 from tkinter import *
-# Explicit imports to satisfy Flake8
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
+import subprocess
+import sys
+
 import info  # Import the info file
+
+
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -41,7 +45,7 @@ def clear_selection():
 
 window = Tk()
 
-window.geometry("1440x1024")
+window.geometry("1440x800")
 window.configure(bg="#FFFFFF")
 
 canvas = Canvas(
@@ -76,7 +80,7 @@ canvas.create_text(
     448.0,
     150.0,
     anchor="nw",
-    text="Please Select 2 Peaks to Compare",
+    text="Please Select 2 Peaks to Compare their Statistics!",
     fill="#000000",
     font=("Roboto", 24 * -1)
 )
@@ -193,7 +197,7 @@ button_5 = Button(
 )
 button_5.place(
     x=1019.0,
-    y=881.0,
+    y=681.0,
     width=243.0,
     height=78.0001220703125
 )
@@ -209,7 +213,7 @@ button_6 = Button(
 )
 button_6.place(
     x=89.0,
-    y=881.0,
+    y=681.0,
     width=243.0,
     height=78.0001220703125
 )
