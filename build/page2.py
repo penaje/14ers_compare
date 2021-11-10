@@ -17,10 +17,12 @@ ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 
 
 def clear_selection():
+    """Clears the selected Peaks"""
     info.selected_peaks.clear()
 
 
 def load_page_1():
+    """Renders Page 1"""
     clear_selection()
     window.destroy()
     import page1
@@ -34,6 +36,7 @@ window = Tk()
 
 
 def img_from_url(url):
+    """Returns an Image object from a url string"""
     with urllib.request.urlopen(url) as connection:
         raw_data = connection.read()
     im = Image.open(io.BytesIO(raw_data))

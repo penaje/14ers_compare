@@ -9,11 +9,13 @@ ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 
 
 def load_page_2():
+    """Renders page 2"""
     window.destroy()
     import page2
 
 
 def print_selection():
+    """Prints out what peaks were selected"""
     print("Your selected Peaks are:")
     for item in info.selected_peaks:
         print(item)
@@ -24,6 +26,7 @@ def relative_to_assets(path: str) -> Path:
 
 
 def add_button_name_to_selection(peak_name):
+    """Prints out what selection was added"""
     if len(info.selected_peaks) < 2:
         info.selected_peaks.append(peak_name)
         print(peak_name + " added to selection!")
@@ -34,6 +37,7 @@ def add_button_name_to_selection(peak_name):
 
 
 def clear_selection():
+    """Clears the user selection"""
     info.selected_peaks.clear()
 
 
