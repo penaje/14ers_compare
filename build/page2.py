@@ -32,23 +32,21 @@ def relative_to_assets(path: str) -> Path:
 
 window = Tk()
 
-images = []
-
 
 def img_from_url(url):
     with urllib.request.urlopen(url) as connection:
         raw_data = connection.read()
     im = Image.open(io.BytesIO(raw_data))
     image = ImageTk.PhotoImage(im)
-    images.append(image)
+    return image
 
 
+# Runs my import_images function from image_import.py on the peaks the user
+# selected on Page_1
 url_list = image_import.import_images(info.selected_peaks)
 
-for url in url_list:
-    img_from_url(url)
 
-window.geometry("1440x1024")
+window.geometry("1440x1000")
 window.configure(bg="#FFFFFF")
 
 canvas = Canvas(
@@ -62,7 +60,7 @@ canvas = Canvas(
 )
 
 canvas.place(x=0, y=0)
-img = images[0]
+img = img_from_url(url_list[0])     # Reference to image for the first peak user selected
 width_1 = img.width()
 height_1 = img.height()
 
@@ -70,7 +68,7 @@ img_1_holder = Canvas(canvas, width=width_1, height=height_1)
 img_1_holder.place(x=400.0, y=32.0)
 img_1_holder.create_image(width_1, height_1, anchor=SE, image=img)
 
-img_2 = images[1]
+img_2 = img_from_url(url_list[1])   # Reference to image for the second peak the user selected
 width_2 = img_2.width()
 height_2 = img_2.height()
 
