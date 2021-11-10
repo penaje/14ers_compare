@@ -23,7 +23,7 @@ def check_image_size(url):
         image = ImageTk.PhotoImage(im)
         return image
 
-    window = Tk()
+    # window = Tk()
 
     image_one = img_from_url(url)
     width = image_one.width()
@@ -36,6 +36,8 @@ def check_image_size(url):
 
 
 def import_images(selected_peaks):  # Pass it the selected_peaks list
+    """Creates a list of image urls from the selected peaks list"""
+
     base_url = 'https://en.wikipedia.org/wiki/'
 
     image_list = []

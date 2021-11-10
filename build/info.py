@@ -1,4 +1,4 @@
-selected_peaks = ['Whitney', 'Elbert']
+selected_peaks = ['Whitney', 'Denali']
 
 peaks_title = {'Whitney': 'Mt. Whitney', 'Elbert': 'Mt. Elbert', 'Rainier': 'Mt. Rainier', 'Denali': 'Denali'}
 

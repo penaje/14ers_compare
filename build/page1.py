@@ -3,12 +3,7 @@ from pathlib import Path
 from tkinter import *
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
-import subprocess
-import sys
-
 import info  # Import the info file
-
-
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
@@ -60,7 +55,7 @@ canvas = Canvas(
 
 canvas.place(x=0, y=0)
 
-button_image_1 = PhotoImage(        # Mt Whitney
+button_image_1 = PhotoImage(  # Mt Whitney
     file=relative_to_assets("button_1.png"))
 button_1 = Button(
     image=button_image_1,

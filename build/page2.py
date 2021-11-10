@@ -8,22 +8,12 @@ import io
 import info
 import image_import
 import ssl
+from tkinter import ttk
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
-url_one = 'https:' + image_import.import_images()[0]
-url_two = 'https:' + image_import.import_images()[1]
-
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
-
-
-def img_from_url(url):
-    with urllib.request.urlopen(url) as connection:
-        raw_data = connection.read()
-    im = Image.open(io.BytesIO(raw_data))
-    image = ImageTk.PhotoImage(im)
-    return image
 
 
 def clear_selection():
@@ -42,14 +32,24 @@ def relative_to_assets(path: str) -> Path:
 
 window = Tk()
 
+images = []
+
+
+def img_from_url(url):
+    with urllib.request.urlopen(url) as connection:
+        raw_data = connection.read()
+    im = Image.open(io.BytesIO(raw_data))
+    image = ImageTk.PhotoImage(im)
+    images.append(image)
+
+
+url_list = image_import.import_images(info.selected_peaks)
+
+for url in url_list:
+    img_from_url(url)
+
 window.geometry("1440x1024")
 window.configure(bg="#FFFFFF")
-
-image_one = img_from_url(url_two)
-width = image_one.width()
-height = image_one.height()
-
-print(height, width)
 
 canvas = Canvas(
     window,
@@ -62,18 +62,21 @@ canvas = Canvas(
 )
 
 canvas.place(x=0, y=0)
+img = images[0]
+width_1 = img.width()
+height_1 = img.height()
 
-img_1_holder = Canvas(canvas, width=200, height=200)
-img_1_holder.place(x=419.0, y=32.0)
+img_1_holder = Canvas(canvas, width=width_1, height=height_1)
+img_1_holder.place(x=400.0, y=32.0)
+img_1_holder.create_image(width_1, height_1, anchor=SE, image=img)
 
-img = img_from_url(url_one)  # NEW
-img_1_holder.create_image(200, 200, anchor=SE, image=img)
+img_2 = images[1]
+width_2 = img_2.width()
+height_2 = img_2.height()
 
-img_2_holder = Canvas(canvas, width=200, height=200)
-img_2_holder.place(x=1162, y=32.0)
-
-img_2 = img_from_url(url_two)  # NEW
-img_2_holder.create_image(200, 200, anchor=SE, image=img_2)
+img_2_holder = Canvas(canvas, width=width_2, height=height_2)
+img_2_holder.place(x=1100, y=32.0)
+img_2_holder.create_image(width_2, height_2, anchor=SE, image=img_2)
 
 canvas.create_rectangle(
     38.0,
@@ -139,20 +142,30 @@ canvas.create_rectangle(
     fill="#C4C4C4",
     outline="")
 
-button_image_1 = PhotoImage(  # Back to home button
-    file=relative_to_assets("button_1_pg_2.png"))
-button_1 = Button(
-    image=button_image_1,
-    borderwidth=0,
-    highlightthickness=0,
-    command=lambda: load_page_1(),
-    relief="flat"
-)
+style = ttk.Style(window)
+style.theme_names()
+style.theme_use('alt')
+
+button_1_style = ttk.Style()
+button_1_style.configure('B1.TButton', font=('Arial', 10, 'bold'), foreground='black', background='#b2f7f4')
+button_1 = ttk.Button(window, text='Back To Home!', command=lambda: load_page_1(), style='B1.TButton')
+
 button_1.place(
     x=1196.0,
     y=933.0,
     width=187.0,
     height=51.0
+)
+
+button_2_style = ttk.Style()
+button_2_style.configure('B2.TButton', font=('Arial', 10, 'bold'), foreground='black', background='#f06e6e')
+
+button_2 = ttk.Button(window, text='Quit!', command=lambda: window.destroy(), style='B2.TButton')
+button_2.place(
+    x=975.0,
+    y=933.0,
+    width=150.0,
+    height=50.0
 )
 
 canvas.create_text(  # Title #1
