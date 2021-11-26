@@ -9,6 +9,8 @@ import info
 import image_import
 import ssl
 from tkinter import ttk
+import tkinter as tk
+import tkinter.scrolledtext as tkst
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -32,7 +34,10 @@ def relative_to_assets(path: str) -> Path:
     return ASSETS_PATH / Path(path)
 
 
+# Create an instance of tkinter
 window = Tk()
+window.geometry("1440x1000")
+window.configure(bg="#FFFFFF")
 
 
 def img_from_url(url):
@@ -48,10 +53,6 @@ def img_from_url(url):
 # selected on Page_1
 url_list = image_import.import_images(info.selected_peaks)
 
-
-window.geometry("1440x1000")
-window.configure(bg="#FFFFFF")
-
 canvas = Canvas(
     window,
     bg="#FFFFFF",
@@ -63,7 +64,7 @@ canvas = Canvas(
 )
 
 canvas.place(x=0, y=0)
-img = img_from_url(url_list[0])     # Reference to image for the first peak user selected
+img = img_from_url(url_list[0])  # Reference to image for the first peak user selected
 width_1 = img.width()
 height_1 = img.height()
 
@@ -71,7 +72,7 @@ img_1_holder = Canvas(canvas, width=width_1, height=height_1)
 img_1_holder.place(x=400.0, y=32.0)
 img_1_holder.create_image(width_1, height_1, anchor=SE, image=img)
 
-img_2 = img_from_url(url_list[1])   # Reference to image for the second peak the user selected
+img_2 = img_from_url(url_list[1])  # Reference to image for the second peak the user selected
 width_2 = img_2.width()
 height_2 = img_2.height()
 
@@ -108,22 +109,6 @@ canvas.create_rectangle(
     113.0,
     1026.0,
     375.0,
-    fill="#C4C4C4",
-    outline="")
-
-canvas.create_rectangle(
-    346.0,
-    305.0,
-    696.0,
-    755.0,
-    fill="#C4C4C4",
-    outline="")
-
-canvas.create_rectangle(
-    1072.0,
-    305.0,
-    1422.0,
-    755.0,
     fill="#C4C4C4",
     outline="")
 
@@ -259,24 +244,59 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-canvas.create_text(  # Peak #1 Climbing Route
-    362.0,
-    340.0,
-    anchor="nw",
-    width=320,
-    text=info.peaks_dict.get(info.selected_peaks[0]),
+canvas.create_text(
+    475,
+    250,
+    anchor='nw',
+    text='Climbing Info',
     fill="#000000",
-    font=("Roboto", 18 * -1)
+    font=('Roboto', 20 * -1)
 )
 
-canvas.create_text(  # Peak 2 Climbing Route
-    1088.0,
-    340.0,
-    anchor="nw",
-    width=320,
-    text=info.peaks_dict.get(info.selected_peaks[1]),
+canvas.create_text(
+    1175,
+    250,
+    anchor='nw',
+    text='Climbing Info',
     fill="#000000",
-    font=("Roboto", 18 * -1)
+    font=('Roboto', 20 * -1)
 )
-window.resizable(False, False)
+
+climbing_info_frame_1 = tk.Frame(  # Holds the frame around the text box
+    master=window,
+    bg='#000000',
+    height=400,
+    width=250
+)
+climbing_info_frame_1.place(x=400, y=300)
+text_area = tkst.ScrolledText(  # Holds the text
+    master=climbing_info_frame_1,
+    wrap=tk.WORD,
+    width=30,
+    height=30
+)
+
+text_area.pack(padx=5, pady=5, fill=tk.BOTH, expand=True)
+text_area.insert(tk.INSERT, info.peaks_dict.get(info.selected_peaks[0]))
+text_area.configure(state='disabled')
+
+climbing_info_frame_2 = tk.Frame(  # Holds the frame around the text box
+    master=window,
+    bg='#000000',
+    height=400,
+    width=250
+)
+climbing_info_frame_2.place(x=1100, y=300)
+text_area_2 = tkst.ScrolledText(  # Holds the text
+    master=climbing_info_frame_2,
+    wrap=tk.WORD,
+    width=30,
+    height=30
+)
+
+text_area_2.pack(padx=5, pady=5, fill=tk.BOTH, expand=True)
+text_area_2.insert(tk.INSERT, info.peaks_dict.get(info.selected_peaks[1]))
+text_area_2.configure(state='disabled')
+
+window.resizable(True, True)
 window.mainloop()

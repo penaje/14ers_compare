@@ -1,6 +1,6 @@
 from pathlib import Path
 from tkinter import *
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, ttk
 
 import info  # Import the info file
 
@@ -42,34 +42,55 @@ def clear_selection():
 
 
 window = Tk()
-
 window.geometry("1440x800")
 window.configure(bg="#FFFFFF")
 
-canvas = Canvas(
-    window,
-    bg="#FFFFFF",
-    height=1024,
-    width=1440,
-    bd=0,
-    highlightthickness=0,
-    relief="ridge"
-)
+# Create a Main Frame
+main_frame = Frame(window)
+main_frame.pack(fill=BOTH, expand=1)
 
-canvas.place(x=0, y=0)
+# Create a Canvas
+canvas = Canvas(main_frame)
+canvas.pack(side=LEFT, fill=BOTH, expand=1)
 
-button_image_1 = PhotoImage(  # Mt Whitney
-    file=relative_to_assets("button_1.png"))
-button_1 = Button(
-    image=button_image_1,
+# Create a scrollbar
+scrollbar = ttk.Scrollbar(main_frame, orient=VERTICAL, command=canvas.yview())
+scrollbar.pack(side=RIGHT, fill=Y)
+
+# Configure the canvas
+canvas.configure(yscrollcommand=scrollbar.set)
+canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox('all')))
+
+# Create another frame
+second_frame = Frame(canvas)
+
+# Add that new frame to a window in the canvas
+canvas.create_window((0, 0), window=second_frame, anchor='nw')
+
+whitney_button = Button(
+    text="Mt. Whitney",
     borderwidth=0,
     highlightthickness=0,
     command=lambda: add_button_name_to_selection('Whitney'),
     relief="flat"
 )
-button_1.place(
+whitney_button.place(
     x=89.0,
     y=295.0,
+    width=243.0,
+    height=78.0001220703125
+)
+
+shasta_button = Button(
+    text='Mt.Shasta',
+    borderwidth=0,
+    highlightthickness=0,
+    command=lambda: add_button_name_to_selection('Shasta'),
+    relief="flat"
+)
+shasta_button.place(
+    x=89.0,
+    y=395.0,
     width=243.0,
     height=78.0001220703125
 )
@@ -101,16 +122,16 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-button_image_2 = PhotoImage(  # Denali
+denali_button_image = PhotoImage(  # Denali
     file=relative_to_assets("button_2.png"))
-button_2 = Button(
-    image=button_image_2,
+denali_button = Button(
+    image=denali_button_image,
     borderwidth=2,
     highlightthickness=0,
     command=lambda: add_button_name_to_selection('Denali'),
     relief="flat"
 )
-button_2.place(
+denali_button.place(
     x=399.0,
     y=295.0,
     width=243.0,
@@ -143,16 +164,16 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-button_image_3 = PhotoImage(  # Mt Elbert
+elbert_button_image = PhotoImage(  # Mt Elbert
     file=relative_to_assets("button_3.png"))
-button_3 = Button(
-    image=button_image_3,
+elbert_button = Button(
+    image=elbert_button_image,
     borderwidth=0,
     highlightthickness=0,
     command=lambda: add_button_name_to_selection('Elbert'),
     relief="flat"
 )
-button_3.place(
+elbert_button.place(
     x=709.0,
     y=295.0,
     width=243.0,
@@ -168,48 +189,48 @@ canvas.create_text(
     font=("Roboto", 24 * -1)
 )
 
-button_image_4 = PhotoImage(  # Mt Rainier
+rainier_button_image = PhotoImage(  # Mt Rainier
     file=relative_to_assets("button_4.png"))
-button_4 = Button(
-    image=button_image_4,
+rainier_button = Button(
+    image=rainier_button_image,
     borderwidth=0,
     highlightthickness=0,
     command=lambda: add_button_name_to_selection('Rainier'),
     relief="flat"
 )
-button_4.place(
+rainier_button.place(
     x=1019.0,
     y=295.0,
     width=243.0,
     height=78.0001220703125
 )
 
-button_image_5 = PhotoImage(  # Submit Button
+submit_button_image = PhotoImage(  # Submit Button
     file=relative_to_assets("button_5.png"))
-button_5 = Button(
-    image=button_image_5,
+submit_button = Button(
+    image=submit_button_image,
     borderwidth=0,
     highlightthickness=0,
     command=lambda: load_page_2(),
     relief="flat"
 )
-button_5.place(
+submit_button.place(
     x=1019.0,
     y=681.0,
     width=243.0,
     height=78.0001220703125
 )
 
-button_image_6 = PhotoImage(  # Clear Selection
+clear_button_image = PhotoImage(  # Clear Selection
     file=relative_to_assets("button_6.png"))
-button_6 = Button(
-    image=button_image_6,
+clear_button = Button(
+    image=clear_button_image,
     borderwidth=0,
     highlightthickness=0,
     command=lambda: clear_selection(),
     relief="flat"
 )
-button_6.place(
+clear_button.place(
     x=89.0,
     y=681.0,
     width=243.0,
