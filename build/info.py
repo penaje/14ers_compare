@@ -1,15 +1,72 @@
 selected_peaks = []
 
-peaks_title = {'Whitney': 'Mt. Whitney', 'Elbert': 'Mt. Elbert', 'Rainier': 'Mt. Rainier', 'Denali': 'Denali'
-    , 'Williamson': 'Mt. Williamson', 'Shasta': 'Mt. Shasta'}
+peaks_title = {'Whitney': 'Mt. Whitney', 'Elbert': 'Mt. Elbert', 'Rainier': 'Mt. Rainier', 'Denali': 'Denali',
+               'Williamson': 'Mt. Williamson', 'Shasta': 'Mt. Shasta'}
 
-peaks_url = {'Whitney': 'Mount_Whitney', 'Elbert': 'Mount_Elbert', 'Rainier': 'Mount_Rainier', 'Denali': 'Denali'
-    , 'Williamson': "Mount_Williamson", 'Shasta': 'Mount_Shasta'}
+peaks_url = {'Whitney': 'Mount_Whitney', 'Elbert': 'Mount_Elbert', 'Rainier': 'Mount_Rainier', 'Denali': 'Denali',
+             'Williamson': "Mount_Williamson", 'Shasta': 'Mount_Shasta'}
 
-peaks_dict = {"Whitney": 'The most popular route to the summit is by way of the Mount Whitney Trail, which starts at '
-                         'Whitney Portal, at an elevation of 8,360 ft (2,548 m), 13 mi (21 km) west of the town of '
-                         'Lone Pine. The hike is about 22 mi (35 km) round trip with an elevation gain of over 6'
-                         '100 ft (1,859 m)',
+peaks_dict = {"Whitney": "Mount Whitney, of the California Sierra Nevada, holds numerous distinctions. It is the "
+                         "highpoint of both Tulare & Inyo counties. It is the highest peak in the Sierra, & indeed in "
+                         "all of California. Finally, it rises higher than any piece of land in the United States "
+                         "outside of Alaska. "
+
+                         "Mount Whitney's elevation stature continues to intrigue the human psyche, both from a "
+                         "civilian as well as a "
+                         "governmental perspective. Its elevation seems to be continually evaluated and reevaluated "
+                         "using the newest technologies, perpetually changing (usually in an upward trend) the "
+                         "mountain's height. The NPS plaque on the mountain lists Whitney's official height at 14,"
+                         "496.811 feet. The most recent observations by NGS (National Geodetic Survey)/NOAA (National "
+                         "Oceanographic & Atmospheric Administration) put it at 14,505' (4,421m)- thanks Eleutheros! "
+
+                         "All this being said, it is still no 5,000m (let alone 6,000 or 7,000m) peak. It would be a "
+                         "minor (if somewhat steep "
+                         "on certain aspects) foothill in any of the Earth’s great ranges. It harbors no glaciers. A "
+                         "huge number of people, possessing little wilderness skills or technical expertise, "
+                         "manage to run, hike, &/or crawl their way to the top of this large piece of exposed granite "
+                         "each year via the uninspiring Mt. Whitney trail. "
+
+                         "The attributes which make Mt. Whitney a truly great mountain are frequently overlooked. "
+                         "History, commanding "
+                         "position, excellent rock, its great east face & ‘subsidiary’ needles, & a tantalizing "
+                         "selection of routes are arguably the bread & butter of Mt. Whitney. During the winter "
+                         "months, delightful opportunities also exist for the ski mountaineer / backcountry "
+                         "snowboarder. "
+
+                         "While its gentle western slopes would hardly inspire the hardened mountaineer, Whitney’s "
+                         "east face, erupting 2, "
+                         "000 ft. above cold & serene Iceberg Lake, draws the climber’s eye upward & makes them "
+                         "yearn. Whitney’s subsidiary needles, (to the south of the main east face), "
+                         "are awe-inspiring enough by themselves, & have their own epics, legends, & lore firmly "
+                         "established. "
+
+                         "The proximity of the highest point in the continental US with the lowest point in North "
+                         "America has not escaped "
+                         "notice. The Badwater Ultramarathon, begun officially in 1987, takes some of the most "
+                         "masochistic individuals imaginable from Badwater (Death Valley) to the lofty summit of Mt. "
+                         "Whitney. Before this was ‘en vogue,’ Stan Rodefer and Jim Burnworth of San Diego became the "
+                         "first people to do the Badwater/Whitney (Lowest/Highest) hike in recorded history, "
+                         "in October 1969. They took 2 weeks, crossed the dreaded salt flats and hiked a direct route "
+                         "not using roads or any other conveniences (this was documented by the Park Rangers and in a "
+                         "November 4, 1969 San Diego Tribune article entitled 'Hikers View High, Low Sites in the "
+                         "U.S.'). Props. Ouch. "
+
+                         "The 11-mile Mount Whitney Trail (class 1) is the easiest and most popular route to the "
+                         "summit and is often done as a "
+                         "strenuous 22-mile day hike. During the summer and autumn months, only sneakers are "
+                         "necessary to ascend this summit from the Whitney Portal trailhead at 8,365 feet, however, "
+                         "earlier in the season, an ice axe and crampons may be required. Many people will appreciate "
+                         "taking two days to do this hike, spending a night at Outpost Camp or Trail Camp. An "
+                         "interesting time to visit is the month of April, before the quota season starts, "
+                         "when the snowpack is firmer and Trail Camp becomes a base camp for groups hanging out in "
+                         "the winter alpine scenery using their 2-way radios to talk to those above Trail Crest. "
+
+                         "While there are many other routes on Whitney, the most popular ones after the main trail "
+                         "include: the Mountaineer's "
+                         "Route, East Face, East Buttress, and North Slope. The first three of these start from "
+                         "Iceberg Lake while the last one is often climbed as a traverse from Mount Russell. Winter "
+                         "makes the Mountaineer's Route a popular objective. The East Face & East Buttress are the "
+                         "classic technical climbs on the peak.",
               'Rainier': 'All climbing routes on Mount Rainier require climbers to possess some level of technical '
                          'climbing skill. This includes ascending and descending the mountain with the use of '
                          'technical climbing equipment such as crampons, ice axes, harnesses, and ropes. Difficulty '

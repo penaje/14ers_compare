@@ -38,7 +38,7 @@ def add_button_name_to_selection(peak_name):
 
 
 # Add Peaks function
-def print_peaks(peak_name):
+def print_peaks():
     string_1 = ' & '.join([str(elem) for elem in info.selected_peaks])
     selected_peaks_label_input.configure(text=string_1)
     print('this is my string:' + string_1)
@@ -47,7 +47,7 @@ def print_peaks(peak_name):
 # Call two functions for the buttons
 def add_and_print(peak_name):
     add_button_name_to_selection(peak_name)
-    print_peaks(peak_name)
+    print_peaks()
 
 
 def clear_selection():
@@ -91,7 +91,7 @@ style.configure('clear.TButton', font=('calibri', 10, 'bold'), foreground='black
 style.configure('submit.TButton', font=('calibri', 10, 'bold'), foreground='black', background="#00FFFF")
 
 style.map('peak.TButton', background=[('pressed', 'blue'),
-                                      ('active', 'green')])
+                                      ('active', '#add8e6')])
 # Add Labels
 title_label = Label(second_frame, text='14er Comparison Tool!', font=('roboto', 20, 'bold'))
 
@@ -129,7 +129,7 @@ washington_label = Label(second_frame, text='Washington',
 
 washington_label.grid(row=3, column=5, padx=10, pady=2, ipadx=3, ipady=3)
 
-# Add  California buttons
+# Add  California buttons ; California column = 2
 whitney_button = Button(second_frame,
                         text="Mt. Whitney",
                         command=lambda: add_and_print('Whitney'),
@@ -139,32 +139,120 @@ whitney_button = Button(second_frame,
 whitney_button.grid(row=4, column=2, padx=20, pady=5, ipadx=3, ipady=3)
 
 shasta_button = Button(second_frame,
-                       text='Mt.Shasta',
+                       text='Mt. Shasta',
                        command=lambda: add_and_print('Shasta'),
                        style="peak.TButton"
                        )
 
-shasta_button.grid(row=5, column=2, padx=20, pady=5, ipadx=3, ipady=3)  # California column = 2
+shasta_button.grid(row=5, column=2, padx=20, pady=5, ipadx=3, ipady=3)
 
-# Add Alaska Buttons
+white_button = Button(second_frame,
+                      text='White Mt.',
+                      command=lambda: add_and_print('White'),
+                      style="peak.TButton"
+                      )
+
+white_button.grid(row=6, column=2, padx=20, pady=5, ipadx=3, ipady=3)
+
+russell_button = Button(second_frame,
+                        text='Mt. Russell',
+                        command=lambda: add_and_print('Russell'),
+                        style="peak.TButton"
+                        )
+
+russell_button.grid(row=7, column=2, padx=20, pady=5, ipadx=3, ipady=3)
+
+split_button = Button(second_frame,
+                      text='Split Mt.',
+                      command=lambda: add_and_print('Split'),
+                      style="peak.TButton"
+                      )
+
+split_button.grid(row=8, column=2, padx=20, pady=5, ipadx=3, ipady=3)
+
+langley_button = Button(second_frame,
+                        text='Mt. Langley',
+                        command=lambda: add_and_print('Langley'),
+                        style="peak.TButton"
+                        )
+
+langley_button.grid(row=9, column=2, padx=20, pady=5, ipadx=3, ipady=3)
+
+tyndall_button = Button(second_frame,
+                        text='Mt. Tyndall',
+                        command=lambda: add_and_print('Tyndall'),
+                        style="peak.TButton"
+                        )
+
+tyndall_button.grid(row=10, column=2, padx=20, pady=5, ipadx=3, ipady=3)
+
+muir_button = Button(second_frame,
+                     text='Mt. Muir',
+                     command=lambda: add_and_print('Muir'),
+                     style="peak.TButton"
+                     )
+
+muir_button.grid(row=11, column=2, padx=20, pady=5, ipadx=3, ipady=3)
+
+# Add Alaska Buttons ; Alaska column = 3
 denali_button = Button(second_frame,
                        text="Denali",
                        command=lambda: add_and_print('Denali'),
                        style="peak.TButton"
                        )
 
-denali_button.grid(row=4, column=3, padx=20, pady=5, ipadx=3, ipady=3)  # Alaska column = 3
+denali_button.grid(row=4, column=3, padx=20, pady=5, ipadx=3, ipady=3)
 
-# Add Colorado Buttons
+# Add Colorado Buttons ; Colorado column = 4
 elbert_button = Button(second_frame,
                        text='Mt. Elbert',
                        command=lambda: add_and_print('Elbert'),
                        style="peak.TButton"
                        )
 
-elbert_button.grid(row=4, column=4, padx=20, pady=5, ipadx=3, ipady=3)  # Colorado column = 4
+elbert_button.grid(row=4, column=4, padx=20, pady=5, ipadx=3, ipady=3)
 
-# Add Washington Buttons
+handies_button = Button(second_frame,
+                        text='Handies Peak',
+                        command=lambda: add_and_print('Handies'),
+                        style="peak.TButton"
+                        )
+
+handies_button.grid(row=5, column=4, padx=20, pady=5, ipadx=3, ipady=3)
+
+grays_button = Button(second_frame,
+                      text='Grays Peak',
+                      command=lambda: add_and_print('Grays'),
+                      style="peak.TButton"
+                      )
+
+grays_button.grid(row=6, column=4, padx=20, pady=5, ipadx=3, ipady=3)
+
+quandary_button = Button(second_frame,
+                         text='Quandary Peak',
+                         command=lambda: add_and_print('Quandary'),
+                         style="peak.TButton"
+                         )
+
+quandary_button.grid(row=7, column=4, padx=20, pady=5, ipadx=3, ipady=3)
+
+san_luis_button = Button(second_frame,
+                         text='San Luis Peak',
+                         command=lambda: add_and_print('San Luis'),
+                         style="peak.TButton"
+                         )
+
+san_luis_button.grid(row=8, column=4, padx=20, pady=5, ipadx=3, ipady=3)
+
+pikes_button = Button(second_frame,
+                      text='Pikes Peak',
+                      command=lambda: add_and_print('Pikes'),
+                      style="peak.TButton"
+                      )
+
+pikes_button.grid(row=9, column=4, padx=20, pady=5, ipadx=3, ipady=3)
+
+# Add Washington Buttons ; Washington column = 5
 rainier_button = Button(second_frame,
                         text='Mt. Rainier',
                         command=lambda: add_and_print('Rainier'),
@@ -180,7 +268,7 @@ submit_button = Button(second_frame,
                        style='submit.TButton'
                        )
 
-submit_button.grid(row=6, column=5, padx=20, pady=5, ipadx=3, ipady=3)
+submit_button.grid(row=15, column=5, padx=20, pady=5, ipadx=3, ipady=3)
 
 clear_button = Button(second_frame,
                       text='Clear Selection',
@@ -188,6 +276,6 @@ clear_button = Button(second_frame,
                       style='clear.TButton'
                       )
 
-clear_button.grid(row=6, column=2, padx=20, pady=5, ipadx=3, ipady=3)
+clear_button.grid(row=15, column=2, padx=20, pady=5, ipadx=3, ipady=3)
 
 root.mainloop()
