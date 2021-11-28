@@ -1,4 +1,4 @@
-selected_peaks = []
+selected_peaks = ['Whitney', 'Elbert']
 
 peaks_title = {'Whitney': 'Mt. Whitney', 'Elbert': 'Mt. Elbert', 'Rainier': 'Mt. Rainier', 'Denali': 'Denali',
                'Williamson': 'Mt. Williamson', 'Shasta': 'Mt. Shasta'}
@@ -108,3 +108,9 @@ peaks_prominence = {'Whitney': '10,075 ft', 'Elbert': '9,093 ft', 'Rainier': '13
 
 peaks_isolation = {'Whitney': '1,647 mi', 'Elbert': '671 mi', 'Rainier': '731 mi', 'Denali': '4,621 mi',
                    'Williamson': '5.44 mi', 'Shasta': '335 mi'}
+
+peaks_state = {'Whitney': 'California', 'Elbert': 'Colorado', 'Rainier': 'Washington', 'Denali': 'Alaska',
+               'Williamson': 'California', 'Shasta': 'California'}
+
+peaks_coord = {'Whitney': '36.57855, -118.29239', 'Elbert': '39.117838, -106.445318', 'Rainier': 'Washington', 'Denali': 'Alaska',
+               'Williamson': 'California', 'Shasta': 'California'}
