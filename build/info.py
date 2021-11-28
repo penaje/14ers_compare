@@ -1,5 +1,8 @@
 selected_peaks = ['Whitney', 'Elbert']
 
+all_trails = {'Elbert': "colorado/north-mount-elbert-trail--3", 'Whitney':
+              "california/mount-whitney-via-mount-whitney-trail"}
+
 peaks_title = {'Whitney': 'Mt. Whitney', 'Elbert': 'Mt. Elbert', 'Rainier': 'Mt. Rainier', 'Denali': 'Denali',
                'Williamson': 'Mt. Williamson', 'Shasta': 'Mt. Shasta'}
 

@@ -11,11 +11,16 @@ import ssl
 from tkinter import ttk
 import tkinter as tk
 import tkinter.scrolledtext as tkst
+import webbrowser
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
 OUTPUT_PATH = Path(__file__).parent
 ASSETS_PATH = OUTPUT_PATH / Path("./assets")
+
+
+def callback(url):
+    webbrowser.open_new_tab(url)
 
 
 def clear_selection():
@@ -27,7 +32,7 @@ def load_page_1():
     """Renders Page 1"""
     clear_selection()
     root.destroy()
-    import page1
+    import page_1_grid
 
 
 def relative_to_assets(path: str) -> Path:
@@ -52,6 +57,8 @@ def img_from_url(url):
 # Runs my import_images function from image_import.py on the peaks the user
 # selected on Page_1
 url_list = image_import.import_images(info.selected_peaks)
+
+peak_one_all_trails_images = image_import.import_images_all_trails(info.selected_peaks[0])
 
 # Create A Main Frame
 main_frame = Frame(root)
@@ -107,10 +114,10 @@ info_box_2 = Frame(second_frame, padx=5, pady=5, bd=2, bg="#D3D3D3")
 info_box_2.grid(row=2, column=4, columnspan=2, padx=10, pady=5, ipadx=2, ipady=2)
 
 # Create the info box information
-highest_point_1 = Label(info_box_1, text='Highest Point', font=('arial', 10, 'bold'), bg='#CBB191')
+highest_point_1 = Label(info_box_1, text='Highest Point Info', font=('arial', 9, 'bold'), bg='#CBB191')
 highest_point_1.grid(row=0, column=0, columnspan=2, sticky=N)
 
-highest_point_2 = Label(info_box_2, text='Highest Point', font=('arial', 10, 'bold'), bg='#CBB191')
+highest_point_2 = Label(info_box_2, text='Highest Point Info', font=('arial', 9, 'bold'), bg='#CBB191')
 highest_point_2.grid(row=0, column=0, columnspan=2, sticky=N)
 
 prominence_1 = Label(info_box_1, text="Prominence: " + info.peaks_prominence.get(info.selected_peaks[0]), bg="#D3D3D3")
@@ -137,10 +144,10 @@ state_1.grid(row=4, column=0, sticky=W)
 state_2 = Label(info_box_2, text="State: " + info.peaks_state.get(info.selected_peaks[1]), bg="#D3D3D3")
 state_2.grid(row=4, column=0, sticky=W)
 
-coords_1 = Label(info_box_1, text="Coordinates: " + info.peaks_state.get(info.selected_peaks[0]), bg="#D3D3D3")
+coords_1 = Label(info_box_1, text="Coordinates: " + info.peaks_coord.get(info.selected_peaks[0]), bg="#D3D3D3")
 coords_1.grid(row=5, column=0, sticky=W)
 
-coords_2 = Label(info_box_2, text="Coordinates: " + info.peaks_state.get(info.selected_peaks[1]), bg="#D3D3D3")
+coords_2 = Label(info_box_2, text="Coordinates: " + info.peaks_coord.get(info.selected_peaks[1]), bg="#D3D3D3")
 coords_2.grid(row=5, column=0, sticky=W)
 
 # Create the text boxes
@@ -183,5 +190,65 @@ text_area = tkst.ScrolledText(  # Holds the text
 text_area.pack(padx=5, pady=5, fill=BOTH, expand=True)
 text_area.insert(tk.INSERT, info.peaks_dict.get(info.selected_peaks[1]))
 text_area.configure(state='disabled')
+
+# Create the clickable links
+link_1 = Label(second_frame, text='Mt.Whitney @ peakbagger.com', font=('Helveticabold', 12), fg="blue",
+               cursor="hand2")
+link_1.grid(row=5, column=2)
+link_1.bind("<Button-1>", lambda e: callback("https://www.peakbagger.com/peak.aspx?pid=2829"))
+
+link_2 = Label(second_frame, text='Mt.Elbert @ peakbagger.com', font=('Helveticabold', 12), fg="blue",
+               cursor="hand2")
+
+link_2.grid(row=5, column=6)
+link_2.bind("<Button-1>", lambda e: callback("https://www.peakbagger.com/peak.aspx?pid=5736"))
+
+# Create the style
+style = ttk.Style(second_frame)
+style.theme_names()
+style.theme_use('alt')
+
+# Create the buttons
+button_1_style = ttk.Style()
+button_1_style.configure('B1.TButton', font=('Arial', 10, 'bold'), foreground='black', background='#b2f7f4')
+button_1 = ttk.Button(second_frame, text='Back To Home!', command=lambda: load_page_1(), style='B1.TButton')
+
+button_1.grid(row=6, column=7)
+
+button_2_style = ttk.Style()
+button_2_style.configure('B2.TButton', font=('Arial', 10, 'bold'), foreground='black', background='#f06e6e')
+
+button_2 = ttk.Button(second_frame, text='Quit!', command=lambda: root.destroy(), style='B2.TButton')
+button_2.grid(row=6, column=1)
+
+# Create the map images
+
+# Image 1
+all_trail_img_1 = img_from_url("https://cdn-assets.alltrails.com/static-map/production/at-map/69203534/trail-us"
+                               "-california-mount-whitney-via-mount-whitney-trail-at-map-69203534-1619646787-300x250"
+                               "-1.png")
+
+# Reference to image for the first peak user selected
+width_1 = all_trail_img_1.width()
+height_1 = all_trail_img_1.height()
+
+image_link_1 = Label(second_frame, image=all_trail_img_1, cursor="hand2")
+image_link_1.grid(row=3, rowspan=1, column=1, columnspan=1, padx=15, pady=10, ipadx=5, ipady=5)
+image_link_1.bind("<Button-1>", lambda e: callback("https://www.alltrails.com/trail/us/california/mount-whitney-via"
+                                                   "-mount-whitney-trail"))
+
+
+# Image 2
+all_trail_img_2 = img_from_url("https://cdn-assets.alltrails.com/static-map/production/at-map/80125290/trail-us"
+                               "-colorado-north-mount-elbert-trail--3-at-map-80125290-1626784161-300x250-1.png")
+
+# Reference to image for the second peak user selected
+width_2 = all_trail_img_2.width()
+height_2 = all_trail_img_2.height()
+
+image_link_2 = Label(second_frame, image=all_trail_img_2, cursor="hand2")
+image_link_2.grid(row=3, rowspan=1, column=4, columnspan=1, padx=15, pady=10, ipadx=5, ipady=5)
+image_link_2.bind("<Button-1>", lambda e: callback("https://www.alltrails.com/trail/us/colorado/north-mount-elbert"
+                                                   "-trail--3"))
 
 root.mainloop()

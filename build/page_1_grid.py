@@ -12,7 +12,7 @@ ASSETS_PATH = OUTPUT_PATH / Path("./assets")
 def load_page_2():
     """Renders page 2"""
     root.destroy()
-    import page2
+    import page_2_grid
 
 
 def print_selection():
