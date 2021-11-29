@@ -1,18 +1,28 @@
-from pathlib import Path
 from tkinter import *
 from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, ttk
 from tkinter.ttk import *
 
 import info  # Import the info file
 
-OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path("./assets")
-
 
 def load_page_2():
     """Renders page 2"""
     root.destroy()
     import page_2_grid
+
+
+def load_page_3():
+    """Renders page 3"""
+    root.destroy()
+    import page_3_grid
+
+
+def load_selection():
+    """Loads either page 2 or 3"""
+    if len(info.selected_peaks) == 3:
+        load_page_3()
+    else:
+        load_page_2()
 
 
 def print_selection():
@@ -22,19 +32,15 @@ def print_selection():
         print(item)
 
 
-def relative_to_assets(path: str) -> Path:
-    return ASSETS_PATH / Path(path)
-
-
 def add_button_name_to_selection(peak_name):
     """Prints out what selection was added"""
-    if len(info.selected_peaks) < 2:
+    if len(info.selected_peaks) < 3:
         info.selected_peaks.append(peak_name)
         print(peak_name + " added to selection!")
         if len(info.selected_peaks) >= 1:
             print_selection()
     else:
-        print("Two Peaks already selected, clear selection and retry!")
+        print("Three Peaks already selected, clear selection and retry!")
 
 
 # Add Peaks function
@@ -252,6 +258,14 @@ pikes_button = Button(second_frame,
 
 pikes_button.grid(row=9, column=4, padx=20, pady=5, ipadx=3, ipady=3)
 
+bierstadt_button = Button(second_frame,
+                          text='Mt. Bierstadt',
+                          command=lambda: add_and_print('Bierstadt'),
+                          style="peak.TButton"
+                          )
+
+bierstadt_button.grid(row=10, column=4, padx=20, pady=5, ipadx=3, ipady=3)
+
 # Add Washington Buttons ; Washington column = 5
 rainier_button = Button(second_frame,
                         text='Mt. Rainier',
@@ -264,7 +278,7 @@ rainier_button.grid(row=4, column=5, padx=20, pady=5, ipadx=3, ipady=3)
 # Add Clear an Submit Buttons
 submit_button = Button(second_frame,
                        text='Submit',
-                       command=lambda: load_page_2(),
+                       command=lambda: load_selection(),
                        style='submit.TButton'
                        )
 

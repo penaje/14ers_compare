@@ -1,13 +1,10 @@
-selected_peaks = ['Whitney', 'Elbert']
-
-all_trails = {'Elbert': "colorado/north-mount-elbert-trail--3", 'Whitney':
-              "california/mount-whitney-via-mount-whitney-trail"}
+selected_peaks = ['Whitney', 'Elbert', 'Bierstadt']
 
 peaks_title = {'Whitney': 'Mt. Whitney', 'Elbert': 'Mt. Elbert', 'Rainier': 'Mt. Rainier', 'Denali': 'Denali',
-               'Williamson': 'Mt. Williamson', 'Shasta': 'Mt. Shasta'}
+               'Williamson': 'Mt. Williamson', 'Shasta': 'Mt. Shasta', 'Bierstadt': 'Mt. Bierstadt'}
 
 peaks_url = {'Whitney': 'Mount_Whitney', 'Elbert': 'Mount_Elbert', 'Rainier': 'Mount_Rainier', 'Denali': 'Denali',
-             'Williamson': "Mount_Williamson", 'Shasta': 'Mount_Shasta'}
+             'Williamson': "Mount_Williamson", 'Shasta': 'Mount_Shasta', 'Bierstadt': 'Mount_Bierstadt'}
 
 peaks_dict = {"Whitney": "Mount Whitney, of the California Sierra Nevada, holds numerous distinctions. It is the "
                          "highpoint of both Tulare & Inyo counties. It is the highest peak in the Sierra, & indeed in "
@@ -101,19 +98,40 @@ peaks_dict = {"Whitney": "Mount Whitney, of the California Sierra Nevada, holds 
                         "Hill.[39] The Casaval Ridge route is a steeper, more technical route on the mountain's "
                         "southwest ridge best climbed when there is a lot of snow pack. This route tops out to the "
                         "left (north) of the Red Banks, directly west of Misery Hill. So the final sections involve a "
-                        "trudge up Misery Hill to the summit plateau, similar to the Avalanche Gulch route "
+                        "trudge up Misery Hill to the summit plateau, similar to the Avalanche Gulch route ",
+              'Bierstadt': "Mount Bierstadt is located 1.4 miles (2.2 km) west by south of Mount Evans and 43.8 miles "
+                           "(70.5 km) west by south of downtown Denver. "
+
+                           "Because it is generally considered an easy climb, along with its accessibility from "
+                           "nearby Denver, Mount Bierstadt "
+                           "is one of the most popular mountains to climb in Colorado. As with most peaks in "
+                           "Colorado, July and August make the best months for climbing Mount Bierstadt. "
+
+                           "The most popular base from which to begin ascent of Mount Bierstadt is Guanella Pass, "
+                           "located to the west. From "
+                           "Guanella Pass it is approximately a 7 miles (11 km) hike, with a climb of 2,391 feet (729 "
+                           "m). The trail descends slightly into the fairly level marshlands surrounding Scott Gomer "
+                           "Creek before reaching Bierstadt's western slopes. On the rocky upper regions of the "
+                           "mountain the route of the trail is marked by a series of cairns. The trail levels about "
+                           "200 feet (61 m) below the summit at saddle point before beginning the final ascent. "
+                           "Alternative trails cover the eastern slopes for longer hikes. "
+
+                           "Once at the summit, a popular option is to continue the hike to nearby Mount Evans along "
+                           "a ridge known as The Sawtooth, an intermediate-level hike that overlooks Abyss Lake, "
+                           "which occupies the bottom of the valley separating Bierstadt and Evans. "
               }
 peaks_elevation = {'Whitney': '14,505 ft', 'Elbert': '14,440 ft', 'Rainier': '14,411 ft', 'Denali': '20,310 ft',
-                   'Williamson': '14,379 ft', 'Shasta': '14,179 ft'}
+                   'Williamson': '14,379 ft', 'Shasta': '14,179 ft', "Bierstadt": "14,065 ft"}
 
 peaks_prominence = {'Whitney': '10,075 ft', 'Elbert': '9,093 ft', 'Rainier': '13,210 ft', 'Denali': '20,194 ft',
-                    'Williamson': '1,643 ft', 'Shasta': '9,772 ft'}
+                    'Williamson': '1,643 ft', 'Shasta': '9,772 ft', "Bierstadt": "720 ft"}
 
 peaks_isolation = {'Whitney': '1,647 mi', 'Elbert': '671 mi', 'Rainier': '731 mi', 'Denali': '4,621 mi',
-                   'Williamson': '5.44 mi', 'Shasta': '335 mi'}
+                   'Williamson': '5.44 mi', 'Shasta': '335 mi', "Bierstadt": "1.12 mi"}
 
 peaks_state = {'Whitney': 'California', 'Elbert': 'Colorado', 'Rainier': 'Washington', 'Denali': 'Alaska',
-               'Williamson': 'California', 'Shasta': 'California'}
+               'Williamson': 'California', 'Shasta': 'California', "Bierstadt": "Colorado"}
 
-peaks_coord = {'Whitney': '36.57855, -118.29239', 'Elbert': '39.117838, -106.445318', 'Rainier': 'Washington', 'Denali': 'Alaska',
-               'Williamson': 'California', 'Shasta': 'California'}
+peaks_coord = {'Whitney': '36.57855, -118.29239', 'Elbert': '39.117838, -106.445318', 'Rainier': 'Washington',
+               'Denali': 'Alaska',
+               'Williamson': 'California', 'Shasta': 'California', "Bierstadt": "39.582596, -105.668814"}
