@@ -116,20 +116,20 @@ def create_page_1():
 
     california_label.grid(row=3, column=2, padx=10, pady=2, ipadx=3, ipady=3)
 
-    alaska_label = Label(second_frame, text='Alaska',
-                         font=('calibri', 14, 'bold'), background="#716352")
+    alaska_washington_label = Label(second_frame, text='Alaska/Washington',
+                                    font=('calibri', 14, 'bold'), background="#716352")
 
-    alaska_label.grid(row=3, column=3, padx=10, pady=2, ipadx=3, ipady=3)
+    alaska_washington_label.grid(row=3, column=3, padx=10, pady=2, ipadx=3, ipady=3)
 
     colorado_label = Label(second_frame, text='Colorado',
                            font=('calibri', 14, 'bold'), background="#716352")
 
     colorado_label.grid(row=3, column=4, padx=10, pady=2, ipadx=3, ipady=3)
 
-    washington_label = Label(second_frame, text='Washington',
+    colorado_2_label = Label(second_frame, text='Colorado',
                              font=('calibri', 14, 'bold'), background="#716352")
 
-    washington_label.grid(row=3, column=5, padx=10, pady=2, ipadx=3, ipady=3)
+    colorado_2_label.grid(row=3, column=5, padx=10, pady=2, ipadx=3, ipady=3)
 
     # Add  California buttons ; California column = 2
     whitney_button = Button(second_frame,
@@ -150,7 +150,7 @@ def create_page_1():
 
     white_button = Button(second_frame,
                           text='White Mt.',
-                          command=lambda: add_and_print('White'),
+                          command=lambda: add_and_print('White_Mountain'),
                           style="peak.TButton"
                           )
 
@@ -196,7 +196,7 @@ def create_page_1():
 
     muir_button.grid(row=11, column=2, padx=20, pady=5, ipadx=3, ipady=3)
 
-    # Add Alaska Buttons ; Alaska column = 3
+    # Add Alaska/Washington Buttons ; Alaska/Washington column = 3
     denali_button = Button(second_frame,
                            text="Denali",
                            command=lambda: add_and_print('Denali'),
@@ -204,6 +204,14 @@ def create_page_1():
                            )
 
     denali_button.grid(row=4, column=3, padx=20, pady=5, ipadx=3, ipady=3)
+
+    rainier_button = Button(second_frame,
+                            text='Mt. Rainier',
+                            command=lambda: add_and_print('Rainier'),
+                            style="peak.TButton"
+                            )
+
+    rainier_button.grid(row=5, column=3, padx=20, pady=5, ipadx=3, ipady=3)
 
     # Add Colorado Buttons ; Colorado column = 4
     elbert_button = Button(second_frame,
@@ -240,7 +248,7 @@ def create_page_1():
 
     san_luis_button = Button(second_frame,
                              text='San Luis Peak',
-                             command=lambda: add_and_print('San Luis'),
+                             command=lambda: add_and_print('San_Luis'),
                              style="peak.TButton"
                              )
 
@@ -262,7 +270,7 @@ def create_page_1():
 
     bierstadt_button.grid(row=10, column=4, padx=20, pady=5, ipadx=3, ipady=3)
 
-    # Add Washington Buttons ; Washington column = 5
+    # Add Colorado_2 Buttons ; Colorado_2 column = 5
     rainier_button = Button(second_frame,
                             text='Mt. Rainier',
                             command=lambda: add_and_print('Rainier'),

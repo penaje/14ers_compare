@@ -11,6 +11,7 @@ from tkinter import ttk
 import tkinter as tk
 import tkinter.scrolledtext as tkst
 import webbrowser
+import web_scraper
 
 
 def create_page_2():
@@ -102,42 +103,51 @@ def create_page_2():
     info_box_2.grid(row=2, column=4, columnspan=2, padx=10, pady=5, ipadx=2, ipady=2)
 
     # Create the info box information
+
+    # Get info for the first peak from my web scraper
+    info_dictionary_1 = web_scraper.info_box_scrape(info.peak_bagger_urls.get(info.selected_peaks[0]))
+    print(info_dictionary_1)
+
+    # Get info for the second peak from my web scraper
+    info_dictionary_2 = web_scraper.info_box_scrape(info.peak_bagger_urls.get(info.selected_peaks[1]))
+    print(info_dictionary_2)
+
     highest_point_1 = Label(info_box_1, text='Highest Point Info', font=('arial', 9, 'bold'), bg='#CBB191')
     highest_point_1.grid(row=0, column=0, columnspan=2, sticky=N)
 
     highest_point_2 = Label(info_box_2, text='Highest Point Info', font=('arial', 9, 'bold'), bg='#CBB191')
     highest_point_2.grid(row=0, column=0, columnspan=2, sticky=N)
 
-    prominence_1 = Label(info_box_1, text="Prominence: " + info.peaks_prominence.get(info.selected_peaks[0]),
+    prominence_1 = Label(info_box_1, text="Prominence: " + info_dictionary_1.get('Prominence'),
                          bg="#D3D3D3")
-    prominence_1.grid(row=1, column=0, sticky=W)
+    prominence_1.grid(row=2, column=0, sticky=W)
 
-    prominence_2 = Label(info_box_2, text="Prominence: " + info.peaks_prominence.get(info.selected_peaks[1]),
+    prominence_2 = Label(info_box_2, text="Prominence: " + info_dictionary_2.get('Prominence'),
                          bg="#D3D3D3")
-    prominence_2.grid(row=1, column=0, sticky=W)
+    prominence_2.grid(row=2, column=0, sticky=W)
 
-    elevation_1 = Label(info_box_1, text="Elevation: " + info.peaks_elevation.get(info.selected_peaks[0]), bg="#D3D3D3")
-    elevation_1.grid(row=2, column=0, sticky=W)
+    elevation_1 = Label(info_box_1, text="Elevation: " + info_dictionary_1.get('Elevation'), bg="#D3D3D3")
+    elevation_1.grid(row=1, column=0, sticky=W)
 
-    elevation_2 = Label(info_box_2, text="Elevation: " + info.peaks_elevation.get(info.selected_peaks[1]), bg="#D3D3D3")
-    elevation_2.grid(row=2, column=0, sticky=W)
+    elevation_2 = Label(info_box_2, text="Elevation: " + info_dictionary_2.get('Elevation'), bg="#D3D3D3")
+    elevation_2.grid(row=1, column=0, sticky=W)
 
-    isolation_1 = Label(info_box_1, text="Isolation: " + info.peaks_isolation.get(info.selected_peaks[0]), bg="#D3D3D3")
+    isolation_1 = Label(info_box_1, text="Isolation: " + info_dictionary_1.get('Isolation'), bg="#D3D3D3")
     isolation_1.grid(row=3, column=0, sticky=W)
 
-    isolation_2 = Label(info_box_2, text="Isolation: " + info.peaks_isolation.get(info.selected_peaks[1]), bg="#D3D3D3")
+    isolation_2 = Label(info_box_2, text="Isolation: " + info_dictionary_2.get('Isolation'), bg="#D3D3D3")
     isolation_2.grid(row=3, column=0, sticky=W)
 
-    state_1 = Label(info_box_1, text="State: " + info.peaks_state.get(info.selected_peaks[0]), bg="#D3D3D3")
+    state_1 = Label(info_box_1, text="State: " + info_dictionary_1.get('State'), bg="#D3D3D3")
     state_1.grid(row=4, column=0, sticky=W)
 
-    state_2 = Label(info_box_2, text="State: " + info.peaks_state.get(info.selected_peaks[1]), bg="#D3D3D3")
+    state_2 = Label(info_box_2, text="State: " + info_dictionary_2.get('State'), bg="#D3D3D3")
     state_2.grid(row=4, column=0, sticky=W)
 
-    coords_1 = Label(info_box_1, text="Coordinates: " + info.peaks_coord.get(info.selected_peaks[0]), bg="#D3D3D3")
+    coords_1 = Label(info_box_1, text="Coordinates: " + info_dictionary_1.get('Coordinates'), bg="#D3D3D3")
     coords_1.grid(row=5, column=0, sticky=W)
 
-    coords_2 = Label(info_box_2, text="Coordinates: " + info.peaks_coord.get(info.selected_peaks[1]), bg="#D3D3D3")
+    coords_2 = Label(info_box_2, text="Coordinates: " + info_dictionary_2.get('Coordinates'), bg="#D3D3D3")
     coords_2.grid(row=5, column=0, sticky=W)
 
     # Create the text boxes
