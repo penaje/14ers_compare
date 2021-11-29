@@ -69,10 +69,12 @@ def create_page_2():
     my_canvas.create_window((0, 0), window=second_frame, anchor="nw")
 
     # Create title labels
-    title_1_label = Label(second_frame, text="Mt. Whitney", font=('roboto', 20, 'bold'), background="#909C74")
+    title_1_label = Label(second_frame, text=info.peaks_title.get(info.selected_peaks[0]), font=('roboto', 20, 'bold'),
+                          background="#909C74")
     title_1_label.grid(row=1, column=1, sticky=NW, padx=10, pady=5, ipadx=2, ipady=2)
 
-    title_2_label = Label(second_frame, text="Mt. Elbert", font=('roboto', 20, 'bold'), background="#909C74")
+    title_2_label = Label(second_frame, text=info.peaks_title.get(info.selected_peaks[1]), font=('roboto', 20, 'bold'),
+                          background="#909C74")
     title_2_label.grid(row=1, column=4, sticky=NW, padx=10, pady=5, ipadx=2, ipady=2)
 
     # Create the Images
@@ -180,16 +182,16 @@ def create_page_2():
     text_area.configure(state='disabled')
 
     # Create the clickable links
-    link_1 = Label(second_frame, text='Mt.Whitney @ peakbagger.com', font=('Helveticabold', 12), fg="blue",
-                   cursor="hand2", bg="#909C74")
+    link_1 = Label(second_frame, text=info.peaks_title.get(info.selected_peaks[0]) + ' on peakbagger.com',
+                   font=('Helveticabold', 12), fg="blue", cursor="hand2", bg="#909C74")
     link_1.grid(row=5, column=2)
-    link_1.bind("<Button-1>", lambda e: callback("https://www.peakbagger.com/peak.aspx?pid=2829"))
+    link_1.bind("<Button-1>", lambda e: callback(info.peak_bagger_urls.get(info.selected_peaks[0])))
 
-    link_2 = Label(second_frame, text='Mt.Elbert @ peakbagger.com', font=('Helveticabold', 12), fg="blue",
-                   cursor="hand2", bg="#909C74")
+    link_2 = Label(second_frame, text=info.peaks_title.get(info.selected_peaks[1]) + ' on peakbagger.com',
+                   font=('Helveticabold', 12), fg="blue", cursor="hand2", bg="#909C74")
 
     link_2.grid(row=5, column=6)
-    link_2.bind("<Button-1>", lambda e: callback("https://www.peakbagger.com/peak.aspx?pid=5736"))
+    link_2.bind("<Button-1>", lambda e: callback(info.peak_bagger_urls.get(info.selected_peaks[1])))
 
     # Create the style
     style = ttk.Style(second_frame)
@@ -212,9 +214,7 @@ def create_page_2():
     # Create the map images
 
     # Image 1
-    all_trail_img_1 = img_from_url("https://cdn-assets.alltrails.com/static-map/production/at-map/69203534/trail-us"
-                                   "-california-mount-whitney-via-mount-whitney-trail-at-map-69203534-1619646787-300x250"
-                                   "-1.png")
+    all_trail_img_1 = img_from_url(info.all_trails_maps.get(info.selected_peaks[0]))
 
     # Reference to image for the first peak user selected
     width_1 = all_trail_img_1.width()
@@ -222,12 +222,10 @@ def create_page_2():
 
     image_link_1 = Label(second_frame, image=all_trail_img_1, cursor="hand2")
     image_link_1.grid(row=3, rowspan=1, column=1, columnspan=1, padx=15, pady=10, ipadx=5, ipady=5)
-    image_link_1.bind("<Button-1>", lambda e: callback("https://www.alltrails.com/trail/us/california/mount-whitney-via"
-                                                       "-mount-whitney-trail"))
+    image_link_1.bind("<Button-1>", lambda e: callback(info.all_trails_links.get(info.selected_peaks[0])))
 
     # Image 2
-    all_trail_img_2 = img_from_url("https://cdn-assets.alltrails.com/static-map/production/at-map/80125290/trail-us"
-                                   "-colorado-north-mount-elbert-trail--3-at-map-80125290-1626784161-300x250-1.png")
+    all_trail_img_2 = img_from_url(info.all_trails_maps.get(info.selected_peaks[1]))
 
     # Reference to image for the second peak user selected
     width_2 = all_trail_img_2.width()
@@ -235,7 +233,6 @@ def create_page_2():
 
     image_link_2 = Label(second_frame, image=all_trail_img_2, cursor="hand2")
     image_link_2.grid(row=3, rowspan=1, column=4, columnspan=1, padx=15, pady=10, ipadx=5, ipady=5)
-    image_link_2.bind("<Button-1>", lambda e: callback("https://www.alltrails.com/trail/us/colorado/north-mount-elbert"
-                                                       "-trail--3"))
+    image_link_2.bind("<Button-1>", lambda e: callback(info.all_trails_links.get(info.selected_peaks[1])))
 
     page_2_top.mainloop()

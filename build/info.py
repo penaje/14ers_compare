@@ -135,3 +135,24 @@ peaks_state = {'Whitney': 'California', 'Elbert': 'Colorado', 'Rainier': 'Washin
 peaks_coord = {'Whitney': '36.57855, -118.29239', 'Elbert': '39.117838, -106.445318', 'Rainier': 'Washington',
                'Denali': 'Alaska',
                'Williamson': 'California', 'Shasta': 'California', "Bierstadt": "39.582596, -105.668814"}
+
+all_trails_links = {'Shasta': "https://www.alltrails.com/trail/us/california/mount-shasta-via-avalanche-gulch-route",
+                    'Whitney': "https://www.alltrails.com/trail/us/california/mount-whitney-via-mount-whitney-trail",
+                    'Elbert': "https://www.alltrails.com/trail/us/colorado/north-mount-elbert-trail--3",
+                    'Bierstadt': "https://www.alltrails.com/trail/us/colorado/mount-bierstadt-trail"}
+
+all_trails_maps = {'Shasta': "https://cdn-assets.alltrails.com/static-map/production/at-map/13576197/trail-us"
+                             "-california-mount-shasta-via-avalanche-gulch-route-at-map-13576197-1590536269-300x250-1"
+                             ".png",
+                   'Whitney': "https://cdn-assets.alltrails.com/static-map/production/at-map/69203534/trail-us"
+                              "-california-mount-whitney-via-mount-whitney-trail-at-map-69203534-1619646787-300x250-1"
+                              ".png",
+                   'Elbert': "https://cdn-assets.alltrails.com/static-map/production/at-map/80125290/trail-us"
+                             "-colorado-north-mount-elbert-trail--3-at-map-80125290-1626784161-300x250-1.png",
+                   "Bierstadt": "https://cdn-assets.alltrails.com/static-map/production/at-map/81048638/trail-us"
+                                "-colorado-mount-bierstadt-trail-at-map-81048638-1627313769-300x250-1.png"}
+
+peak_bagger_urls = {'Shasta': "https://www.peakbagger.com/peak.aspx?pid=2477",
+                    'Whitney': "https://www.peakbagger.com/peak.aspx?pid=2829",
+                    'Elbert': "https://www.peakbagger.com/peak.aspx?pid=5736",
+                    "Bierstadt": "https://www.peakbagger.com/peak.aspx?pid=31508"}
