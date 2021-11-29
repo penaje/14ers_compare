@@ -1,7 +1,29 @@
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://www.peakbagger.com/peak.aspx?pid=2477"
+
+# This code snippet from:
+# https://stackoverflow.com/questions/14596884/remove-text-between-and
+
+def remove_text_inside_brackets(text, brackets="()"):
+    count = [0] * (len(brackets) // 2)  # count open/close brackets
+    saved_chars = []
+    for character in text:
+        for i, b in enumerate(brackets):
+            if character == b:
+                kind, is_close = divmod(i, 2)
+                count[kind] += (-1) ** is_close
+                if count[kind] < 0:
+                    count[kind] = 0
+                else:
+                    break
+        else:
+            if not any(count):
+                saved_chars.append(character)
+    return ''.join(saved_chars)
+
+
+URL = "https://www.peakbagger.com/peak.aspx?pid=5736"
 
 r = requests.get(URL)
 
@@ -38,7 +60,7 @@ info_dict['Isolation'] = temp_list[2][10:]
 
 state = soup.find('td', string="State/Province")
 info = state.next_sibling.string
-info_dict['State'] = info
+info_dict['State'] = remove_text_inside_brackets(info)
 
 # Get Coordinates
 
@@ -49,13 +71,26 @@ for num in info:
     temp_list.append(num)
 info_dict['Coordinates'] = temp_list[1][:-10]
 
-print(info_dict)
+ca_url = 'https://www.peakbagger.com/list.aspx?lid=-301603'
 
+co_url = "https://www.peakbagger.com/list.aspx?lid=50080"
 
+r = requests.get(ca_url)
 
+soup = BeautifulSoup(r.content, 'html.parser')
 
+ca_url_dict = {}
 
+temp_list = []
 
+info = soup.find_all('a')
+count = 1
+for item in info:
+    if count >= 21:
+        if item.string != 'Sierra Nevada':
+            ca_url_dict[item.string] = "https://www.peakbagger.com/" + str(item.get('href'))
+        count += 1
+    else:
+        count += 1
 
-
-
+print(ca_url_dict)
