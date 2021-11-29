@@ -12,6 +12,7 @@ import tkinter as tk
 import tkinter.scrolledtext as tkst
 import webbrowser
 import web_scraper
+import textbox_scraper
 
 
 def create_page_2():
@@ -164,11 +165,11 @@ def create_page_2():
         wrap=tk.WORD,
         width=35,
         height=30,
-        font=('arial', 8, 'bold')
+        font=('arial', 10, 'bold')
     )
 
     text_area.pack(padx=5, pady=5, fill=BOTH, expand=True)
-    text_area.insert(tk.INSERT, info.peaks_dict.get(info.selected_peaks[0]))
+    text_area.insert(tk.INSERT, textbox_scraper.get_textbox_info(info.selected_peaks[0]))
     text_area.configure(state='disabled')
 
     climbing_info_frame_2 = Frame(  # Holds the frame around the text box
@@ -184,11 +185,11 @@ def create_page_2():
         wrap=tk.WORD,
         width=35,
         height=30,
-        font=('arial', 8, 'bold')
+        font=('arial', 10, 'bold')
     )
 
     text_area.pack(padx=5, pady=5, fill=BOTH, expand=True)
-    text_area.insert(tk.INSERT, info.peaks_dict.get(info.selected_peaks[1]))
+    text_area.insert(tk.INSERT, textbox_scraper.get_textbox_info(info.selected_peaks[1]))
     text_area.configure(state='disabled')
 
     # Create the clickable links
