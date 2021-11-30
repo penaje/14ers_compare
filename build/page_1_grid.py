@@ -1,11 +1,10 @@
 from tkinter import *
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage, ttk
+from tkinter import Canvas, Button, ttk
 from tkinter.ttk import *
-import info  # Import the info file
+import info
 import page_2_grid
 import page_3_grid
 import tkinter as tk
-import tkinter.ttk as ttk
 
 
 def create_page_1():

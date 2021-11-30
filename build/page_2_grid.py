@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import Canvas
 from PIL import Image, ImageTk
 from urllib.request import urlopen
 import urllib
@@ -227,20 +227,12 @@ def create_page_2():
     # Image 1
     all_trail_img_1 = img_from_url(info.all_trails_maps.get(info.selected_peaks[0]))
 
-    # Reference to image for the first peak user selected
-    width_1 = all_trail_img_1.width()
-    height_1 = all_trail_img_1.height()
-
     image_link_1 = Label(second_frame, image=all_trail_img_1, cursor="hand2")
     image_link_1.grid(row=3, rowspan=1, column=1, columnspan=1, padx=15, pady=10, ipadx=5, ipady=5)
     image_link_1.bind("<Button-1>", lambda e: callback(info.all_trails_links.get(info.selected_peaks[0])))
 
     # Image 2
     all_trail_img_2 = img_from_url(info.all_trails_maps.get(info.selected_peaks[1]))
-
-    # Reference to image for the second peak user selected
-    width_2 = all_trail_img_2.width()
-    height_2 = all_trail_img_2.height()
 
     image_link_2 = Label(second_frame, image=all_trail_img_2, cursor="hand2")
     image_link_2.grid(row=3, rowspan=1, column=4, columnspan=1, padx=15, pady=10, ipadx=5, ipady=5)
