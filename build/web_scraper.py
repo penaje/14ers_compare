@@ -25,6 +25,12 @@ def info_box_scrape(URL):
                     saved_chars.append(character)
         return ''.join(saved_chars)
 
+    # Denali edge case handler
+    if URL == "https://www.peakbagger.com/peak.aspx?pid=271":
+        info_dict = {'Elevation': '20,310 ft (6190 m)', 'Prominence': '20,194 ft (6,155 m)', 'State': 'Alaska',
+                     'Isolation': '4,621.1 mi (7,436.9 km)', 'Coordinates': '63.069042, -151.006347'}
+        return info_dict
+
     r = requests.get(URL)
 
     soup = BeautifulSoup(r.content, 'html.parser')
