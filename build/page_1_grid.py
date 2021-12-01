@@ -9,7 +9,7 @@ import tkinter as tk
 
 def create_page_1():
     page_1_top = Toplevel()
-    page_1_top.geometry('800x900')
+    page_1_top.geometry('950x800')
     page_1_top.title("Select you peaks!")
 
     def load_page_2():
@@ -97,7 +97,7 @@ def create_page_1():
 
     title_label.grid(row=0, column=0, columnspan=6, padx=5, pady=2, ipadx=3, ipady=3)
 
-    selection_label = Label(second_frame, text='Please select two to three peaks to compare!',
+    selection_label = Label(second_frame, text='Please select two to three peaks to see their info!',
                             font=('calibri', 14, 'bold'), background="#716352", foreground="#1c2e4a"
                             )
 

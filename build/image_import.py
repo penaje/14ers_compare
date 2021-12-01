@@ -58,7 +58,6 @@ def import_images(selected_peaks):
         while check_image_size('https:' + data.get('URLS')[count]) is not True:
             # This verifies that the image is large enough to be correct
             # if not we check the next image.
-            # TODO need to add more/better logic, but it works for now
             count += 1
         updated_url = 'https:' + data.get('URLS')[count]
         image_list.append(updated_url)

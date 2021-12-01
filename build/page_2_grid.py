@@ -33,7 +33,7 @@ def create_page_2():
         page_1_grid.create_page_1()
 
     page_2_top = Toplevel()
-    page_2_top.geometry('1400x900')
+    page_2_top.geometry('1920x1080')
     page_2_top.title("Here's your information!")
 
     def img_from_url(url):
