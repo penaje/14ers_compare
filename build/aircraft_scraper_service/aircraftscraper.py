@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 import json
 import sys
 
+# This is my aircraft scraper service for my teammate
+
 with open('input.json') as file:
     data = json.load(file)
 
