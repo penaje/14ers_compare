@@ -307,6 +307,6 @@ def create_page_3():
     image_link_3 = Label(second_frame, image=all_trail_img_3, cursor="hand2")
     image_link_3.grid(row=3, rowspan=1, column=7, columnspan=1, padx=12, pady=10, ipadx=5, ipady=5)
     image_link_3.bind("<Button-1>",
-                      lambda e: callback(info.all_trails_links.get(info.selected_peaks[3])))
+                      lambda e: callback(info.all_trails_links.get(info.selected_peaks[2])))
 
     page_3_top.mainloop()
